@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management System</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: #f4f6f8;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+
+        .container {
+            width: 90%;
+            margin: 30px auto;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .book-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .book-info {
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>📚 Library Management System</h1>
+        <p>Explore our collection of story books</p>
+    </div>
+
+    <div class="container">
+        <div class="book-grid">
+            {% for book in books %}
+            <div class="book-card">
+                <div class="book-title">{{ book.title }}</div>
+                <div class="book-info">📖 Author: {{ book.author }}</div>
+                <div class="book-info">🆔 Book ID: {{ book.book_id }}</div>
+                <div class="price">₹ {{ book.price }}</div>
+            </div>
+            {% empty %}
+            <p>No books available.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 Library Management System | Admin Controlled</p>
+    </div>
+
+</body>
+</html>
